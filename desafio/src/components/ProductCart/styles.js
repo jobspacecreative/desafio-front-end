@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const BoxCard = styled.div`
   margin: 10px;
@@ -7,7 +7,7 @@ export const BoxCard = styled.div`
   border: solid 1px #c0c0c0;
   padding: 10px;
   border-radius: 10px;
-  img{
+  img {
     width: 50px;
     height: 50px;
     border-radius: 50px;
@@ -25,4 +25,5 @@ export const Price = styled.text`
 export const Remover = styled.text`
   color: red;
   font-weight: bold;
+  cursor: pointer;
 `;
