@@ -1,17 +1,29 @@
 /**
  * @desc [Componente do Produto no carrinho]
  */
-import React from 'react';
-import { BoxCard, Title, Price, Remover } from './styles';
+import React, { useContext } from 'react';
+import { CartContext } from '../../context';
+import * as S from './styles';
 
-export default function ProductCart() {
+export default function ProductCart({ avatar, name, price, id }) {
+    const [cart, setCart] = useContext(CartContext);
 
-    return(
-        <BoxCard>
-            <img src="http://www.receitadodia.com/wp-content/uploads/2013/07/bolo_chocolate-521x380.jpg" alt=""/>
-            <Title>Titulo do produto</Title>
-            <Price>170.00</Price>
-            <Remover>X</Remover>
-        </BoxCard>
+    function removeProduct(id) {
+        setCart(cart.filter(item => item.id !== id))
+    }
+
+    return (
+        <S.Container>
+           <S.MainInfor>
+           <S.Image src={avatar} alt="" />
+            <S.Details>
+                <S.Title>{name}</S.Title>
+                <S.Price>{price}</S.Price>
+            </S.Details>
+           </S.MainInfor>
+           <S.MainInfor>
+           <S.DeleteButton onClick={() => removeProduct(id)} />
+           </S.MainInfor>
+        </S.Container>
     );
 }

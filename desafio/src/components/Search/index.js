@@ -1,17 +1,8 @@
 import React from 'react';
-import {
-  Form
-} from 'react-bootstrap';
+import * as S from './styles';
 
-export default function Search(props) {
+export default function Search({ type, placeholder, onChange }) {
   return (
-    <>
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>{props.title}</Form.Label>
-          <Form.Control type="text" onChange={props.filterName} placeholder="Buscar produto"/>
-        </Form.Group>
-      </Form>
-    </>
+      <S.Input type={type} placeholder={placeholder} onChange={onChange} />
   )
 }

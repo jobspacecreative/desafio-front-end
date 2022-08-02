@@ -1,33 +1,26 @@
 import React from 'react';
-import {
-    Row,
-    Col
-  } from 'react-bootstrap';
-  import { Container, BoxProducts } from './styles';
+import * as S from './styles';
 
-  //components
-  import Header from '../../components/Header'
-  import Product from '../../components/Product'
+//components
+import ProductList from '../../components/ProductList';
+import Cart from '../../components/Cart';
 
-  export default function Home() {
-      return(
-        <>
-          <Container>
-            <Row>
-              <Col xs={12}>
-                <Header />
-              </Col>
-              <h2>Produtos</h2>
-              <BoxProducts>
-                <Product props/>
-                <Product props/>
-                <Product props/>
-                <Product props/>
-                <Product props/>
-                <Product props/>
-              </BoxProducts>  
-            </Row>
-          </Container>
-        </>
-      );
-  }
+export default function Home() {
+  return (
+    <>
+      <S.Container>
+        <S.TwoColumnGrid>
+          <S.Side>
+          </S.Side>
+          <S.Main>
+            <S.MainHeader>
+              <p>Produto(s) encontrados</p>
+            </S.MainHeader>
+            <ProductList />
+          </S.Main>
+        </S.TwoColumnGrid>
+        <Cart />
+      </S.Container>
+    </>
+  );
+}
