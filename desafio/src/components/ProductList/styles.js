@@ -22,10 +22,9 @@ export const Title = styled.h3`
 
 export const Products = styled.div`
   display: flex;
-  justify-content: flex-start;
-  margin-left: 10px;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-  gap: 20px;
+  gap: 25px;
 `;

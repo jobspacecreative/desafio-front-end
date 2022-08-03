@@ -30,4 +30,18 @@ export const Button = styled.button`
   cursor: pointer;
   margin: 0 20px;
   background: transparent;
-`
+  position: relative;
+`;
+
+export const CartQty = styled.span`
+  position: absolute;
+  right: -8px;
+  font-size: 15px;
+  color: #eee;
+  background-color: #f02d34;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: 600;
+`;
