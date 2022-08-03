@@ -31,7 +31,6 @@ const TopBanner = () => {
         <SwiperSlide><img src={banner3} alt="" /><Subtitle>Compre no conforto do seu lar!</Subtitle></SwiperSlide>
         <SwiperSlide><img src={banner4} alt="" /><Subtitle>Tudo em um só lugar!</Subtitle></SwiperSlide>
       </Swiper>
-      
     </Container>
   )
 }
