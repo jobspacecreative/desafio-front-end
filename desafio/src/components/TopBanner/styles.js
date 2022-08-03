@@ -4,19 +4,47 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+  .swiper {
+    max-width: 1700px;
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-button-next:after, .swiper-button-prev:after {
+    display: none;
+  }
 
-export const Banner = styled.img`
-  max-width: 1600px;
-  width: 100%;
-  height: 60vh;
-  object-fit: cover;
-  position: relative;
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    max-width: 1700px;
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+  }
 `;
 
 export const Subtitle = styled.h1`
   position: absolute;
-  left: 40%;
-  bottom: 35%;
+  bottom: 40px;
   color: #fff;
+  z-index: 1;
 `
