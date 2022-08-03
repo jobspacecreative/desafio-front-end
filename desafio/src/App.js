@@ -1,14 +1,19 @@
-import React from 'react';
-
+import Home from './pages/Home';
 import GlobalStyle from './styles/global';
-import Home from './pages/Home/index';
+import { ThemeProvider } from 'styled-components';
+import { AppContext } from './contexts/AppContext';
+import { Toaster } from 'react-hot-toast';
+import theme from './styles/themes/theme';
 
 function App() {
   return (
-    <>
-    <GlobalStyle />
-    <Home />
-    </>
+    <AppContext>
+      <Toaster />
+      <ThemeProvider theme={theme}>
+        <Home />
+        <GlobalStyle />
+      </ThemeProvider>  
+    </AppContext>  
   );
 }
 
