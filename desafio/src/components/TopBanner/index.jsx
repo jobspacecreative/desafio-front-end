@@ -4,7 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import "swiper/css/bundle";
 
-import banner from '../../assets/images/banner.png';
+import banner1 from '../../assets/images/banner1.png';
+import banner2 from '../../assets/images/banner2.png';
+import banner3 from '../../assets/images/banner3.png';
+import banner4 from '../../assets/images/banner4.png';
 
 const TopBanner = () => {
   return (
@@ -23,12 +26,10 @@ const TopBanner = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide><img src={banner} alt="" /><Subtitle>Teste 1</Subtitle></SwiperSlide>
-        <SwiperSlide><img src={banner} alt="" /><Subtitle>Teste 2</Subtitle></SwiperSlide>
-        <SwiperSlide><img src={banner} alt="" /><Subtitle>Teste 3</Subtitle></SwiperSlide>
-        <SwiperSlide><img src={banner} alt="" /><Subtitle>Teste 4</Subtitle></SwiperSlide>
-        <SwiperSlide><img src={banner} alt="" /><Subtitle>Teste 5</Subtitle></SwiperSlide>
-        <SwiperSlide><img src={banner} alt="" /><Subtitle>Teste 6</Subtitle></SwiperSlide>
+        <SwiperSlide><img src={banner1} alt="" /><Subtitle>Passe mais tempo com seu melhor amigo!</Subtitle></SwiperSlide>
+        <SwiperSlide><img src={banner2} alt="" /><Subtitle>Roupas e acessórios!</Subtitle></SwiperSlide>
+        <SwiperSlide><img src={banner3} alt="" /><Subtitle>Compre no conforto do seu lar!</Subtitle></SwiperSlide>
+        <SwiperSlide><img src={banner4} alt="" /><Subtitle>Tudo em um só lugar!</Subtitle></SwiperSlide>
       </Swiper>
       
     </Container>

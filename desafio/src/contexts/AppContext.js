@@ -90,19 +90,19 @@ export const AppContext = ({children}) => {
     <Context.Provider value={{
       productList,
       showCart,
-        setShowCart,
-        cartItems,
-        totalPrice,
-        totalQuantities,
-        qty,
-        incQty,
-        decQty,
-        onAdd,
-        toggleCartItemQuanitity,
-        onRemove,
-        setCartItems,
-        setTotalPrice,
-        setTotalQuantities 
+      setShowCart,
+      cartItems,
+      totalPrice,
+      totalQuantities,
+      qty,
+      incQty,
+      decQty,
+      onAdd,
+      toggleCartItemQuanitity,
+      onRemove,
+      setCartItems,
+      setTotalPrice,
+      setTotalQuantities 
     }}>
       {children}
     </Context.Provider>

@@ -24,7 +24,7 @@ export const Image = styled.img`
 
 export const Title = styled.h2`
   margin: 10px 5px;
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.colors.textBlack};
 `
 export const Desc = styled.h4`
   margin: 10px;
