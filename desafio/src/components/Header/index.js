@@ -21,7 +21,7 @@ export default function Header({ searchText, setSearchText, productsCartList, se
                 searchText={searchText}
                 setSearchText={setSearchText}
             />
-            <Button variant="primary" onClick={() => setActive(true)}>Carrinho (1)</Button>
+            <Button variant="primary" onClick={() => setActive(true)}>Carrinho ({productsCartList.length})</Button>
         </Container>
         <BoxAside active={active}>
             
@@ -34,7 +34,7 @@ export default function Header({ searchText, setSearchText, productsCartList, se
                     setProductsCartList={setProductsCartList}
                 />
             </div>
-            <p>Valor total: 170.00</p>
+            <p>Valor total: 0,00</p>
         </BoxAside>
         </>
     );
