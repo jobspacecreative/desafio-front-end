@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import Search from '../Search';
 import ProductCart from '../ProductCart';
 
-export default function Header({ searchText, setSearchText, productsCartList }) {
+export default function Header({ searchText, setSearchText, productsCartList, setProductsCartList }) {
     const [active, setActive] = useState(false);
 
     return(
@@ -31,6 +31,7 @@ export default function Header({ searchText, setSearchText, productsCartList }) 
             <div>
                 <ProductCart
                     productsCartList={productsCartList}
+                    setProductsCartList={setProductsCartList}
                 />
             </div>
             <p>Valor total: 170.00</p>

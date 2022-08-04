@@ -43,6 +43,7 @@ import {
                   setSearchText={setSearchText}
                   searchText={searchText}
                   productsCartList={productsCartList}
+                  setProductsCartList={setProductsCartList}
                 />
               </Col>
               <h2>Produtos</h2>

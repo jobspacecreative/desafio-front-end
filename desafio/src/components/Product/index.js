@@ -7,10 +7,10 @@ import { BoxCard, Price } from './styles';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-export default function Product({ avatar, name, desciption, price, productsCartList, setProductsCartList }) {
+export default function Product({ avatar, name, desciption, price, key, productsCartList, setProductsCartList }) {
 
-    function handleProductCard(avatar, name, price) {
-        setProductsCartList([ ...productsCartList, {avatar, name, price}])
+    function handleProductCard(avatar, name, price, key) {
+        setProductsCartList([ ...productsCartList, {avatar, name, price, key}])
     }
 
     return(
@@ -23,7 +23,7 @@ export default function Product({ avatar, name, desciption, price, productsCartL
                     {desciption}
                     <Price>{price}</Price>
                     </Card.Text>
-                    <Button onClick={() => handleProductCard(avatar, name, price)} variant="primary">Adicionar ao carrinho</Button>
+                    <Button onClick={() => handleProductCard(avatar, name, price, key)} variant="primary">Adicionar ao carrinho</Button>
                 </Card.Body>
             </Card>
         </BoxCard>
