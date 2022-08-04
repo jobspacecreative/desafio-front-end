@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Row,
     Col
@@ -9,7 +9,22 @@ import {
   import Header from '../../components/Header'
   import Product from '../../components/Product'
 
+  import api from '../../services/api';
+
   export default function Home() {
+
+    const [productsList, setProductsList] = useState([]);
+
+    const getProducts = async () => {
+      await api.get()
+      .then((response) => setProductsList(response.data))
+      .catch((err) => console.error(err));
+    }
+
+    useEffect(() => {
+      getProducts();
+    }, []);
+
       return(
         <>
           <Container>
@@ -19,12 +34,15 @@ import {
               </Col>
               <h2>Produtos</h2>
               <BoxProducts>
-                <Product props/>
-                <Product props/>
-                <Product props/>
-                <Product props/>
-                <Product props/>
-                <Product props/>
+                {productsList.map((product) => (
+                  <Product
+                    key={product.id}
+                    avatar={product.avatar}
+                    name={product.name}
+                    desciption={product.desciption}
+                    price={product.price}
+                  />
+                ))}
               </BoxProducts>  
             </Row>
           </Container>
