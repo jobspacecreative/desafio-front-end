@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Row,
     Col
@@ -9,23 +9,73 @@ import {
   import Header from '../../components/Header'
   import Product from '../../components/Product'
 
+  import api from '../../services/api';
+
   export default function Home() {
+
+    const [productsList, setProductsList] = useState([]);
+    const [searchText, setSearchText] = useState('');
+    const [productsCartList, setProductsCartList] = useState([]);
+
+    const getProducts = async () => {
+      await api.get()
+      .then((response) => setProductsList(response.data))
+      .catch((err) => console.error(err));
+    }
+
+    useEffect(() => {
+      getProducts();
+    }, []);
+
+    const filteredProducts = searchText.length > 0
+    ? productsList.filter((product) => (product.name.toLowerCase()).includes(searchText.toLowerCase()) ||
+      (product.desciption.toLowerCase()).includes(searchText.toLowerCase()) ||
+      product.price.includes(searchText))
+    : [];
+
+
       return(
         <>
           <Container>
             <Row>
               <Col xs={12}>
-                <Header />
+                <Header
+                  setSearchText={setSearchText}
+                  searchText={searchText}
+                  productsCartList={productsCartList}
+                  setProductsCartList={setProductsCartList}
+                />
               </Col>
               <h2>Produtos</h2>
-              <BoxProducts>
-                <Product props/>
-                <Product props/>
-                <Product props/>
-                <Product props/>
-                <Product props/>
-                <Product props/>
-              </BoxProducts>  
+              {searchText.length > 0 ? (
+                <BoxProducts>
+                  {filteredProducts.map((product) => (
+                    <Product
+                      productsCartList={productsCartList}
+                      setProductsCartList={setProductsCartList}
+                      key={product.id}
+                      avatar={product.avatar}
+                      name={product.name}
+                      desciption={product.desciption}
+                      price={product.price}
+                    />
+                  ))}
+                </BoxProducts>
+              ) : (
+                <BoxProducts>
+                  {productsList.map((product) => (
+                    <Product
+                      productsCartList={productsCartList}
+                      setProductsCartList={setProductsCartList}
+                      key={product.id}
+                      avatar={product.avatar}
+                      name={product.name}
+                      desciption={product.desciption}
+                      price={product.price}
+                    />
+                  ))}
+                </BoxProducts>
+              )}  
             </Row>
           </Container>
         </>
