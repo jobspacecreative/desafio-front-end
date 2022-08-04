@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import Search from '../Search';
 import ProductCart from '../ProductCart';
 
-export default function Header({ searchText, setSearchText }) {
+export default function Header({ searchText, setSearchText, productsCartList }) {
     const [active, setActive] = useState(false);
 
     return(
@@ -25,11 +25,13 @@ export default function Header({ searchText, setSearchText }) {
         </Container>
         <BoxAside active={active}>
             
-            <Button variant="danger" style={{height: 35}} onClick={() => setActive(false)}>X</Button>
+            <Button variant="danger" style={{height: 35, marginRight: '1rem'}} onClick={() => setActive(false)}>X</Button>
+            <p className="text-center">Carrinho</p>
             
             <div>
-                <p className="text-center">Carrinho</p>
-                <ProductCart props/>
+                <ProductCart
+                    productsCartList={productsCartList}
+                />
             </div>
             <p>Valor total: 170.00</p>
         </BoxAside>

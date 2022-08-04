@@ -15,6 +15,7 @@ import {
 
     const [productsList, setProductsList] = useState([]);
     const [searchText, setSearchText] = useState('');
+    const [productsCartList, setProductsCartList] = useState([]);
 
     const getProducts = async () => {
       await api.get()
@@ -41,6 +42,7 @@ import {
                 <Header
                   setSearchText={setSearchText}
                   searchText={searchText}
+                  productsCartList={productsCartList}
                 />
               </Col>
               <h2>Produtos</h2>
@@ -48,6 +50,8 @@ import {
                 <BoxProducts>
                   {filteredProducts.map((product) => (
                     <Product
+                      productsCartList={productsCartList}
+                      setProductsCartList={setProductsCartList}
                       key={product.id}
                       avatar={product.avatar}
                       name={product.name}
@@ -60,6 +64,8 @@ import {
                 <BoxProducts>
                   {productsList.map((product) => (
                     <Product
+                      productsCartList={productsCartList}
+                      setProductsCartList={setProductsCartList}
                       key={product.id}
                       avatar={product.avatar}
                       name={product.name}

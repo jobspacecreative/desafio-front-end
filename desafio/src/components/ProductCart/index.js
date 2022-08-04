@@ -2,16 +2,20 @@
  * @desc [Componente do Produto no carrinho]
  */
 import React from 'react';
-import { BoxCard, Title, Price, Remover } from './styles';
+import { Container, BoxCard, Title, Price, Remover } from './styles';
 
-export default function ProductCart() {
+export default function ProductCart({ productsCartList }) {
 
     return(
-        <BoxCard>
-            <img src="http://www.receitadodia.com/wp-content/uploads/2013/07/bolo_chocolate-521x380.jpg" alt=""/>
-            <Title>Titulo do produto</Title>
-            <Price>170.00</Price>
-            <Remover>X</Remover>
-        </BoxCard>
+        <Container>
+            {productsCartList.map((product) => (
+                <BoxCard>
+                    <img src={product.avatar} alt="product" aria-hidden />
+                    <Title>{product.name}</Title>
+                    <Price>{product.price}</Price>
+                    <Remover>X</Remover>
+                </BoxCard>
+            ))}
+        </Container>
     );
 }
