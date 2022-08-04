@@ -10,14 +10,17 @@ import Button from 'react-bootstrap/Button';
 import Search from '../Search';
 import ProductCart from '../ProductCart';
 
-export default function Header() {
+export default function Header({ searchText, setSearchText }) {
     const [active, setActive] = useState(false);
 
     return(
         <>
         <Container>
             <p>Logo</p>
-            <Search />
+            <Search
+                searchText={searchText}
+                setSearchText={setSearchText}
+            />
             <Button variant="primary" onClick={() => setActive(true)}>Carrinho (1)</Button>
         </Container>
         <BoxAside active={active}>

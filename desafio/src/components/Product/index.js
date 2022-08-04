@@ -9,6 +9,10 @@ import Card from 'react-bootstrap/Card';
 
 export default function Product({ avatar, name, desciption, price }) {
 
+    function handleProductCard() {
+        // 
+    }
+
     return(
         <BoxCard>
             <Card style={{ width: '18rem' }}>
@@ -19,7 +23,7 @@ export default function Product({ avatar, name, desciption, price }) {
                     {desciption}
                     <Price>{price}</Price>
                     </Card.Text>
-                    <Button variant="primary">Adicionar ao carrinho</Button>
+                    <Button onClick={handleProductCard} variant="primary">Adicionar ao carrinho</Button>
                 </Card.Body>
             </Card>
         </BoxCard>
