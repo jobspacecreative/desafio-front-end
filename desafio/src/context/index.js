@@ -55,6 +55,7 @@ export default function CartProvider({ children }) {
 
   const clearCart = () => {
     setProductsCart([]);
+    setTotalPrice(0);
   };
 
   let providerValues = {
