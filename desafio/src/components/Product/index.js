@@ -1,27 +1,37 @@
 /**
  * @desc [Componente do Produto em lista]
  */
-import React from 'react';
-import { BoxCard, Price } from './styles';
+import React, { useContext } from "react";
+import { CartContext } from "../../context";
 
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { BoxCard, Price } from "./styles";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
-export default function Product() {
+export default function Product(props) {
+  const {addProductToCart} = useContext(CartContext);
 
-    return(
-        <BoxCard>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="http://www.receitadodia.com/wp-content/uploads/2013/07/bolo_chocolate-521x380.jpg" />
-                <Card.Body>
-                    <Card.Title>Bolo de chocolate</Card.Title>
-                    <Card.Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempus condimentum ipsum vitae auctor. 
-                    <Price>129.60</Price>
-                    </Card.Text>
-                    <Button variant="primary">Adicionar ao carrinho</Button>
-                </Card.Body>
-            </Card>
-        </BoxCard>
-    );
+  const product = props.props;
+
+  const handleAddProduct = (product) =>{
+    addProductToCart(product)
+  }
+
+  return (
+    <BoxCard id={product.id}>
+      <Card style={{ width: "18rem" }}>
+        <Card.Img variant="top" id="productImage" src={product.avatar} />
+        <Card.Body>
+          <Card.Title>{product.name}</Card.Title>
+          <Card.Text>
+            <p>{product.desciption}</p>
+            <Price>{product.price}</Price>
+          </Card.Text>
+          <Button variant="primary" onClick={() =>handleAddProduct(product)}>
+            Adicionar ao carrinho
+          </Button>
+        </Card.Body>
+      </Card>
+    </BoxCard>
+  );
 }
