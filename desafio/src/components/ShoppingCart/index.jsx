@@ -1,14 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../../context";
 
 import { BsFillCartFill } from "react-icons/bs";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { BoxAside } from "../Header/styles";
 import ProductCart from "../ProductCart";
 
 const ShoppingCart = () => {
+  const [show, setShow] = useState(false);
   const { productsCart, totalPrice, setActiveCart, clearCart } =
     useContext(CartContext);
+
+  const handleClearCart = () => {
+    clearCart();
+    setShow(false);
+  };
 
   return (
     <>
@@ -28,7 +34,7 @@ const ShoppingCart = () => {
           </Button>
           <Button
             disabled={!productsCart.length > 0}
-            onClick={() => clearCart()}
+            onClick={() => setShow(true)}
             variant="danger"
             size="sm"
             style={{ height: 35, marginTop: "2px" }}
@@ -56,6 +62,24 @@ const ShoppingCart = () => {
           Valor total: {totalPrice}
         </div>
       </BoxAside>
+
+      <Modal show={show}>
+        <Modal.Header closeButton>
+          <Modal.Title>Exclusão dos produtos</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Tem certeza que deseja limpar o carrinho? <br />
+          Todos os itens adicionados serão excluídos!
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShow(false)}>
+            Manter produtos
+          </Button>
+          <Button variant="primary" onClick={() => handleClearCart()}>
+            Limpar carrinho
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
