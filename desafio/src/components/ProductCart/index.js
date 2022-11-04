@@ -7,23 +7,10 @@ import { CartContext } from "../../context";
 import { BoxCard, Title, Price } from "./styles";
 
 export default function ProductCart() {
-  const {
-    productsCart,
-    removeProductToCart,
-    setTotalPrice,
-    addProductToCart,
-    removeProduct,
-  } = useContext(CartContext);
-
-  let initialPrice = 0;
-  const handleCalculatePrice = (price) => {
-    initialPrice += Number(price);
-    setTotalPrice(initialPrice);
-  };
+  const { productsCart, removeProductToCart, addProductToCart, removeProduct } =
+    useContext(CartContext);
 
   return productsCart.map((product) => {
-    handleCalculatePrice(product.price);
-
     return (
       <BoxCard key={product.id}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>

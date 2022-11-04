@@ -24,8 +24,20 @@ export default function CartProvider({ children }) {
     console.log(finded);
   };
 
+  let initialPrice = totalPrice;
+  const incrementPrice = (price) => {
+    initialPrice += Number(price);
+    setTotalPrice(initialPrice);
+  };
+
+  const decrementPrice = (price) => {
+    initialPrice -= Number(price);
+    setTotalPrice(initialPrice);
+  };
+
   const addProductToCart = (product) => {
     const copyProductsCart = [...productsCart];
+    incrementPrice(product.price);
 
     const item = copyProductsCart.find((i) => i.id === product.id);
 
@@ -41,14 +53,13 @@ export default function CartProvider({ children }) {
 
   const removeProductToCart = (id) => {
     const copyProductsCart = [...productsCart];
-
     const item = copyProductsCart.find((product) => product.id === id);
+    decrementPrice(item.price);
 
     if (item.qtd > 1) {
       item.qtd = item.qtd - 1;
       setProductsCart(copyProductsCart);
     } else {
-      setTotalPrice(0);
       const arrayFiltered = copyProductsCart.filter(
         (product) => product.id !== id
       );
@@ -62,7 +73,13 @@ export default function CartProvider({ children }) {
     const arrayFiltered = copyProductsCart.filter(
       (product) => product.id !== id
     );
+
+    const item = copyProductsCart.find((i) => i.id === id);
+    const totalPriceItem = item.price * item.qtd;
+    const newPrice = totalPrice - totalPriceItem;
+
     setProductsCart(arrayFiltered);
+    setTotalPrice(newPrice);
   };
 
   const clearCart = () => {

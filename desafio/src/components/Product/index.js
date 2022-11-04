@@ -10,12 +10,7 @@ import Card from "react-bootstrap/Card";
 
 export default function Product(props) {
   const {addProductToCart} = useContext(CartContext);
-
   const product = props.props;
-
-  const handleAddProduct = (product) =>{
-    addProductToCart(product)
-  }
 
   return (
     <BoxCard id={product.id}>
@@ -27,7 +22,7 @@ export default function Product(props) {
             <p>{product.desciption}</p>
             <Price>{product.price}</Price>
           </Card.Text>
-          <Button variant="primary" onClick={() =>handleAddProduct(product)}>
+          <Button variant="primary" onClick={() =>addProductToCart(product)}>
             Adicionar ao carrinho
           </Button>
         </Card.Body>
