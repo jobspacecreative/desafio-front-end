@@ -1,35 +1,27 @@
+/* eslint-disable jsx-a11y/alt-text */
 /**
  * @desc [Componente do Header]
  */
-import React, {useState} from 'react';
-import { Container, BoxAside } from './styles';
-
-import Button from 'react-bootstrap/Button';
+import React, { useContext } from "react";
+import { Container, Logo } from "./styles";
+import { CartContext } from "../../context";
 
 //components
-import Search from '../Search';
-import ProductCart from '../ProductCart';
+import Button from "react-bootstrap/Button";
+import Search from "../Search";
 
 export default function Header() {
-    const [active, setActive] = useState(false);
+  const { productsCart, setActiveCart } = useContext(CartContext);
 
-    return(
-        <>
-        <Container>
-            <p>Logo</p>
-            <Search />
-            <Button variant="primary" onClick={() => setActive(true)}>Carrinho (1)</Button>
-        </Container>
-        <BoxAside active={active}>
-            
-            <Button variant="danger" style={{height: 35}} onClick={() => setActive(false)}>X</Button>
-            
-            <div>
-                <p className="text-center">Carrinho</p>
-                <ProductCart props/>
-            </div>
-            <p>Valor total: 170.00</p>
-        </BoxAside>
-        </>
-    );
+  return (
+    <>
+      <Container>
+        <Logo src="https://jobspace.com.br/wp-content/themes/Jobspace/assets/img/logo-bg.png" />
+        <Search />
+        <Button variant="primary" onClick={() => setActiveCart(true)}>
+          Carrinho ({productsCart.length})
+        </Button>
+      </Container>
+    </>
+  );
 }

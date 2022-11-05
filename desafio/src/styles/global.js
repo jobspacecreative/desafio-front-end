@@ -36,4 +36,8 @@ export default createGlobalStyle`
     }
   }
 
+  .row{
+    --bs-gutter-x: 0rem;
+  }
+
 `;
