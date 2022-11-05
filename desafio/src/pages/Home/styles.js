@@ -8,4 +8,5 @@ export const BoxProducts = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 10px;
 `;

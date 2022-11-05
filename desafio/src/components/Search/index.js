@@ -5,7 +5,7 @@ import {
 import { CartContext } from '../../context';
 
 export default function Search(props) {
-  const { handleSearch } = useContext(CartContext);
+  const { setFilteredProducts } = useContext(CartContext);
 
 
   return (
@@ -13,8 +13,7 @@ export default function Search(props) {
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>{props.title}</Form.Label>
-          {/* <Form.Control type="text" onChange={props.filterName} placeholder="Buscar produto"/> */}
-          <Form.Control type="text" onChange={(e)=>handleSearch(e.target.value)} placeholder="Buscar produto"/>
+          <Form.Control type="text" onChange={(e)=>setFilteredProducts(e.target.value)} placeholder="Buscar produto"/>
         </Form.Group>
       </Form>
     </>

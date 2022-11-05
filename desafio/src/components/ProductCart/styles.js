@@ -22,3 +22,20 @@ export const Price = styled.p`
   color: green;
   margin-top:10px;
 `;
+
+export const ProductInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+`; 
+
+export const ProductCartAmount = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 30%;
+  margin-left: 40%;
+`;
+
+export const AmountSpan = styled.span`
+  margin-top: 10px;
+  margin: 10px;
+`;

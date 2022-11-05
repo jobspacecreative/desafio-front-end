@@ -4,16 +4,33 @@
 import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { CartContext } from "../../context";
-import { BoxCard, Title, Price } from "./styles";
+import {
+  BoxCard,
+  Title,
+  Price,
+  ProductInfo,
+  ProductCartAmount,
+  AmountSpan,
+} from "./styles";
 
 export default function ProductCart() {
   const { productsCart, removeProductToCart, addProductToCart, removeProduct } =
     useContext(CartContext);
 
+  if (productsCart.length === 0) {
+    return (
+      <img
+        alt="empty-cart"
+        width={"100%"}
+        src="https://www.pngkit.com/png/detail/411-4110678_carrinho-de-compras-vazio-shopping-cart.png"
+      />
+    );
+  }
+
   return productsCart.map((product) => {
     return (
       <BoxCard key={product.id}>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <ProductInfo>
           <img src={product.avatar} alt="" />
           <Title>{product.name}</Title>
           <Price>{product.price}</Price>
@@ -25,15 +42,8 @@ export default function ProductCart() {
           >
             x
           </Button>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            width: "30%",
-            marginLeft: "40%",
-          }}
-        >
+        </ProductInfo>
+        <ProductCartAmount>
           <Button
             size="sm"
             variant="light"
@@ -41,7 +51,7 @@ export default function ProductCart() {
           >
             +
           </Button>
-          <p style={{ marginTop: "10px", margin: "10px" }}>{product.qtd}</p>
+          <AmountSpan>{product.qtd}</AmountSpan>
           <Button
             size="sm"
             variant="light"
@@ -49,7 +59,7 @@ export default function ProductCart() {
           >
             -
           </Button>
-        </div>
+        </ProductCartAmount>
       </BoxCard>
     );
   });

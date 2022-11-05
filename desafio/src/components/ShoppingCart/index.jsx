@@ -3,8 +3,8 @@ import { CartContext } from "../../context";
 
 import { BsFillCartFill } from "react-icons/bs";
 import { Button, Modal } from "react-bootstrap";
-import { BoxAside } from "../Header/styles";
 import ProductCart from "../ProductCart";
+import { BoxAside, CartHeader, PriceArea } from "./styles";
 
 const ShoppingCart = () => {
   const [show, setShow] = useState(false);
@@ -19,8 +19,8 @@ const ShoppingCart = () => {
   return (
     <>
       <BoxAside>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <p style={{ padding: "8px", fontWeight: "600" }}>
+        <CartHeader>
+          <p style={{ padding: "8px"}}>
             <BsFillCartFill />({productsCart.length})
           </p>
           <Button
@@ -48,7 +48,7 @@ const ShoppingCart = () => {
           >
             X
           </Button>
-        </div>
+        </CartHeader>
         <div
           style={{
             display: "flex",
@@ -58,9 +58,9 @@ const ShoppingCart = () => {
         >
           <ProductCart />
         </div>
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <PriceArea>
           Valor total: {totalPrice}
-        </div>
+        </PriceArea>
       </BoxAside>
 
       <Modal show={show}>

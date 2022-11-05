@@ -9,7 +9,7 @@ import { Row, Col } from "react-bootstrap";
 import { Container, BoxProducts } from "./styles";
 
 export default function Home() {
-  const { activeCart, products } = useContext(CartContext);
+  const { activeCart, productsFiltered } = useContext(CartContext);
 
   return (
     <>
@@ -29,10 +29,9 @@ export default function Home() {
           </div>
         )}
         <Container>
-          <h2>Produtos</h2>
           <BoxProducts>
-            {products.map((product) => {
-              return <Product props={product} />;
+            {productsFiltered.map((product) => {
+              return <Product key={product.id} props={product} />;
             })}
           </BoxProducts>
         </Container>

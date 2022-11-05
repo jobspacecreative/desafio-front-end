@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 import getProducts from "../services";
 
 export const CartContext = createContext();
@@ -7,6 +7,7 @@ export default function CartProvider({ children }) {
   const [productsCart, setProductsCart] = useState([]);
   const [activeCart, setActiveCart] = useState(false);
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState('')
   const [totalPrice, setTotalPrice] = useState(0);
 
   const loadProducts = async () => {
@@ -18,11 +19,12 @@ export default function CartProvider({ children }) {
     loadProducts();
   }, []);
 
-  const handleSearch = (value) => {
-    console.log(value);
-    let finded = products.find((i) => i.name === value);
-    console.log(finded);
-  };
+  const productsFiltered = useMemo(()=>{
+    const lowerSearch = filteredProducts.toLowerCase();
+    return products.filter((product)=>{
+      return product.name.toLowerCase().includes(lowerSearch)
+    })
+  }, [filteredProducts, products])
 
   let initialPrice = totalPrice;
   const incrementPrice = (price) => {
@@ -92,12 +94,13 @@ export default function CartProvider({ children }) {
     products,
     productsCart,
     totalPrice,
+    productsFiltered,
     setActiveCart,
     addProductToCart,
     removeProductToCart,
     removeProduct,
     clearCart,
-    handleSearch,
+    setFilteredProducts,
     setTotalPrice,
   };
 
